@@ -1,11 +1,12 @@
 <?php
 namespace Registry;
 
-class Registry {
+abstract class Registry {
     public const GESTOR = 'ICANN';
     protected string $nameRegistry;
     protected string $user;
     protected string $pw;
+    protected array $tlds;
 
     public function __construct($nameRegistry,$user,$pw){
         $this->nameRegistry = $nameRegistry;
@@ -36,7 +37,15 @@ class Registry {
         return $this->pw;
     }
 
+    public function getTlds() : string{
+        return serialize($this->tlds);
+    }
 
+    public function __toString() {
+         return "Clase de ".$this->getNameRegistry()."\n";
+    }
+
+    public abstract function setContacts(array $contacts);
 }
 
 ?>
