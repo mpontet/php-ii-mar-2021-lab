@@ -9,13 +9,21 @@ spl_autoload_register(
   }
 );
 use Registry\Registry;
+use Registry\Verisign;
+use Registry\Afilias;
 
-$verisign = new Registry('Verisign','dinahosting','nfihtrye');
-echo "The user of Dinahosting in ".$verisign->getNameRegistry()." is ".$verisign->getUser().".\n";
+$verisign = new Verisign('Verisign','dinahosting','nfihtrye');
+echo $verisign;
+echo "Los tlds de ".$verisign->getNameRegistry()." son ".$verisign->getTlds()."\n";
+$verisign->setContacts(['Registrant','Admin','Technical','Billing']);
 
-$afilias = new Registry('Afilias','dh-1421','nfhtrdfeye');
+echo "\n\n";
+
+$afilias = new Afilias('Afilias','dh-1421','nfhtrdfeye');
+echo $afilias;
 $afilias->setPassword('jdjcndkdl');
 echo "We change the password of ".$afilias->getNameRegistry().". The new password is: ".$afilias->getPassword().".\n";
-
+echo "Los tlds de ".$afilias->getNameRegistry()." son ".$afilias->getTlds()."\n";
+$verisign->setContacts(['Registrant2','Admin2','Technical2','Billing2']);
 
 ?>
