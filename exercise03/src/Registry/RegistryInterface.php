@@ -1,7 +1,7 @@
 <?php
 namespace Registry;
 
-interface Registry {
+interface RegistryInterface {
 
     public function getNameRegistry(): string;
 

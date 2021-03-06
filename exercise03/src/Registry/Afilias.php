@@ -2,7 +2,7 @@
 
 namespace Registry;
 
-class Afilias implements Registry
+class Afilias implements RegistryInterface
 {
     use CredentialsEPP, CredentialsWeb
     {

@@ -8,10 +8,11 @@ spl_autoload_register(
         require BASE.'/src/'.$file;
     }
 );
-use Registry\Registry;
+use Registry\RegistryInterface;
 use Registry\Afilias;
 use Exception\FailConnectionException;
-use Registry\CredentialsEPP;
+use Registry\ContainerRegistry;
+
 try {
 
     $afilias = new Afilias('1445', 'lasdasdf');
@@ -19,6 +20,10 @@ try {
     echo "The user is ".$afilias->getUser()."\n";
 
     echo "The user web is ".$afilias->getUserWeb()."\n";
+
+    $containerRegistry = new ContainerRegistry($afilias);
+
+    echo "The name of the Registry is ".$containerRegistry->getNameRegistry()."\n";
 
     if(!$afilias->connect())
         throw new FailConnectionException($afilias);
